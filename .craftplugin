@@ -1,0 +1,26 @@
+{
+  "pluginName": "HTTP/3 Server Push Twig",
+  "pluginDescription": "This plugin provides a convenient way to utilize Server Push via a twig filter",
+  "pluginVersion": "1.0.0",
+  "pluginAuthorName": "Benjamin Räder",
+  "pluginVendorName": "technology\\reader\\server-push",
+  "pluginAuthorUrl": "https://www.raeder.technology/",
+  "pluginAuthorGithub": "N0ps32",
+  "codeComments": "yes",
+  "pluginComponents": [
+    "twigextensions"
+  ],
+  "consolecommandName": "",
+  "controllerName": "",
+  "cpsectionName": "",
+  "elementName": "",
+  "fieldName": "",
+  "modelName": "",
+  "purchasableName": "",
+  "recordName": "",
+  "serviceName": "",
+  "taskName": "",
+  "utilityName": "",
+  "widgetName": "",
+  "apiVersion": "api_version_3_0"
+}
