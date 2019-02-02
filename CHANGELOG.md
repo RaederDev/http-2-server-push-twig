@@ -7,3 +7,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## 1.0.0 - 2019-02-02
 ### Added
 - Initial release
+
+## 1.0.1 - 2019-02-02
+### Added
+- Replace host base url for better compatibility
