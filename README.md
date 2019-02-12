@@ -45,3 +45,13 @@ It's also possible to mark an asset as crossorigin:
 
 After your site template was rendered by craft a hook will generate the Header.
 If you're using Caddy you can find an example on how to configure your server in my blog-post: https://www.raeder.technology/post/practical-php-implementation-for-http-2-server-push
+
+## Using HTTP/2 Server Push Twig modulepreload
+
+Module preload headers are an experimental browser feature so tread carefully.
+To push your module file use the h2module filter:
+```
+<script type="module" src="{{ 'app.js' | h2module }}"></script>
+```
+
+Please note that you must add 'type="module"' to your script tag, otherwise Google Chrome will not support import and export features.

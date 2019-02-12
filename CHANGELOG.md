@@ -11,3 +11,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## 1.0.1 - 2019-02-02
 ### Added
 - Replace host base url for better compatibility
+
+## 1.1.0 - 2019-02-12
+### Added
+- Support for modulepreload ES modules
