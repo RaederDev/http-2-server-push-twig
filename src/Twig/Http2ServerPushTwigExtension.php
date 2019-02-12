@@ -38,6 +38,21 @@ class Http2ServerPushTwigExtension extends \Twig_Extension
         self::$assetsToPush[$input] = [
             'type' => $type,
             'crossorigin' => $crossorigin,
+            'module' => false,
+        ];
+
+        //pass back input to template
+        return $input;
+    }
+
+    public function h2Module(string $input): string
+    {
+        if (!empty(self::$assetsToPush[$input])) {
+            return $input;
+        }
+
+        self::$assetsToPush[$input] = [
+            'module' => true,
         ];
 
         //pass back input to template
@@ -48,6 +63,7 @@ class Http2ServerPushTwigExtension extends \Twig_Extension
     {
         return [
             new \Twig_Filter('h2push', [$this, 'h2Push']),
+            new \Twig_Filter('h2module', [$this, 'h2Module']),
         ];
     }
 

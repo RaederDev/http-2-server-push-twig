@@ -14,7 +14,7 @@ class Http2ServerPushTwig extends Plugin
 
     public static $plugin;
 
-    public $schemaVersion = '1.0.1';
+    public $schemaVersion = '1.1.0';
 
     public function init()
     {
@@ -30,12 +30,21 @@ class Http2ServerPushTwig extends Plugin
 
         Event::on(View::class, View::EVENT_AFTER_RENDER_PAGE_TEMPLATE, function () {
             $assets = [];
+            $modules = [];
             $hostUrl = preg_replace("/\/?$/", '', Craft::$app->request->getAbsoluteUrl());
 
             //iterate over assets to build Link substrings
             foreach (Http2ServerPushTwigExtension::$assetsToPush as $asset => $config) {
-                $type = $config['type'];
                 $asset = str_replace($hostUrl, '', $asset);
+
+                //modules
+                if ($config['module']) {
+                    $modules[] = $asset;
+                    continue;
+                }
+
+                //normal assets
+                $type = $config['type'];
                 if ($config['crossorigin']) {
                     $assets[] = "<$asset>; rel=preload; as=$type; crossorigin";
                 } else {
@@ -43,15 +52,15 @@ class Http2ServerPushTwig extends Plugin
                 }
             }
 
-            if (count($assets) < 1) {
-                return;
+            //now we add our headers
+            $headers = Craft::$app->getResponse()->getHeaders();
+            if (count($assets) > 0) {
+                $headers->add('Link', implode(',', $assets));
             }
 
-            //now we add our header
-            Craft::$app
-                ->getResponse()
-                ->getHeaders()
-                ->add('Link', implode(',', $assets));
+            foreach ($modules as $module) {
+                $headers->add('Link', "<$module>; rel=modulepreload");
+            }
         });
     }
 
