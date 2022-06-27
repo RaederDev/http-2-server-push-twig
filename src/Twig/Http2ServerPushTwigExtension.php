@@ -2,7 +2,10 @@
 
 namespace Raeder\Technology\ServerPush\Twig;
 
-class Http2ServerPushTwigExtension extends \Twig_Extension
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
+
+class Http2ServerPushTwigExtension extends AbstractExtension
 {
 
     public static $assetsToPush = [];
@@ -62,8 +65,8 @@ class Http2ServerPushTwigExtension extends \Twig_Extension
     public function getFilters(): array
     {
         return [
-            new \Twig_Filter('h2push', [$this, 'h2Push']),
-            new \Twig_Filter('h2module', [$this, 'h2Module']),
+            new TwigFilter('h2push', [$this, 'h2Push']),
+            new TwigFilter('h2module', [$this, 'h2Module']),
         ];
     }
 
