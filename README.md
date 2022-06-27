@@ -1,10 +1,10 @@
-# HTTP/2 Server Push Twig plugin for Craft CMS 3.x
+# HTTP/2 Server Push Twig plugin for Craft CMS 4.x
 
 This plugin provides a convenient way to utilize Server Push via a twig filter
 
 ## Requirements
 
-This plugin requires Craft CMS 3.0.0 or later.
+This plugin requires Craft CMS 4.0.0 or later.
 
 ## Installation
 
